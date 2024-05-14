@@ -1,0 +1,35 @@
+// @import '../assets/styles.scss';
+.b-portfolio {
+  @include padding;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  background-color: $backlor;
+  @include fle;
+  flex-direction: column;
+  @include marg-max-width;
+  padding-top: 14px;
+}
+.b-portfolio__heading {
+  @include align-fontw;
+  font-size: 34px;
+  font-family: $ffamily;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+.b-portfolio__photo {
+  width: $width;
+  @include marg-max-width;
+  max-height: 100%;
+  display: block;
+}
+.b-portfolio__text {
+  @include align-fontw;
+  color: #282833;
+  padding-top: 17px;
+  padding-bottom: 50px;
+  line-height: 21.83px;
+  font-family: $ffamily;
+  font-size: 18px;
+  line-height: 21.83px;
+  text-decoration: underline;
+}

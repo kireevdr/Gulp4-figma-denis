@@ -1,0 +1,43 @@
+// @import '../assets/styles.scss';
+.b-header {
+	@include padding
+}
+.b-header__menu {
+	background-color: $back;
+	height: 60.94px;
+	width: $width;
+	@include marg-max-width;
+	padding-bottom: 0px;
+	@include fle;
+	justify-content: space-between;
+	padding-top: 33px;
+	font-family: $ffamily; 
+	font-size: 18px;
+}
+.b-header__menu-item {
+	background-color: $back;
+	text-decoration:none;
+	font-size: 18px;
+	font-family: $ffamily;
+	color: $col;
+	font-size: 18px;
+	line-height: 22.28px;
+	font-weight: revert;
+}
+.b-header__line {
+	width: $width;
+	@include marg-max-width;
+	background-color: $back;
+}
+.b-header__hr-line{
+	max-width: 100%;
+	margin: 0;
+}
+a {
+	&:hover {
+		color: black;
+	}
+	&:focus {
+		color: green;
+	}
+}

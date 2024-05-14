@@ -1,0 +1,27 @@
+{
+  "name": "gulp4-figma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "del": "^6.1.1",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-include": "^2.4.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-sass-glob-import": "^0.1.0",
+    "node-sass-glob-importer": "^5.3.3",
+    "sass": "^1.77.1"
+  },
+  "dependencies": {
+    "gulp-sass-bulk-import": "^1.0.1"
+  }
+}

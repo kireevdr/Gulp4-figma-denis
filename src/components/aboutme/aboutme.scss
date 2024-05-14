@@ -1,0 +1,24 @@
+.b-aboutme {
+	background-color: $backlor;
+	height: 506px;
+	@include marg-max-width;
+	background-color: $backlor;
+}
+.b-aboutme__heading {
+	@include align-fontw;
+	font-size: 34px;
+	font-family: $ffamily;
+	margin-top: 0px; 
+	padding-top: 100px;
+}
+.b-aboutme__text {
+	text-align: center;
+	font-family: $ffamily;
+	color: #282833;
+	font-size: 18px;
+	padding-top: 17.75px;
+	line-height: 21.83px;
+}
+
+
+

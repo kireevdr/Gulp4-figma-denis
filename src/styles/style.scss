@@ -1,0 +1,61 @@
+body {
+	height: 4759px; 
+	background-color: rgba(229, 229, 229, 1);
+}
+
+.wrapper {
+	width: 1444px;
+	max-width: 80%;
+	padding-left: 29px; 
+	padding-right: 29px;
+	margin-left: auto;
+	margin-right: auto; 
+	}
+
+$ffamily: "Arial";
+$back: rgba(255, 255, 255, 1);
+$width: 936px;
+$backlor: rgba(246, 246, 246, 1);
+$col: rgba(130, 130, 130, 1);
+
+@mixin col-ff-align {
+	text-align: center;
+	color: $col;
+	font-family: $ffamily;
+}
+
+@mixin padding {
+	padding: {
+		left: 29px;
+		right: 29px;
+	}
+	background-color: $back;
+}
+
+@mixin marg-max-width {
+	margin: {
+		left: auto;
+		right: auto;
+	}
+	max-width: 100%;
+}
+
+@mixin fle {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+@mixin align-fontw {
+	font-weight: bold;
+	text-align: center;
+}
+
+@mixin col-ff-align {
+	text-align: center;
+	color: $col;
+	font-family: $ffamily;
+}
+
+
+
+@import "../components/**/*.scss";
