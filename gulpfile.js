@@ -6,6 +6,7 @@ const gcssmq = require('gulp-group-css-media-queries')
 const includeFiles = require('gulp-include')
 const browserSync = require('browser-sync').create()
 const bulkSass = require('gulp-sass-bulk-import');
+const resizer = require('gulp-images-resizer');
 
 function browsersync() {
 	browserSync.init({
@@ -30,6 +31,19 @@ function browsersync() {
 	.pipe(dest('./public/css/'))
 	.pipe(browserSync.stream())
   }
+
+function resize() {
+    return src('./src/images/**/*', { encoding: false })
+	.pipe(resizer({
+            format: 'png',
+            width: 1920,
+			height: 1080,
+			quality: 80,
+			tinify: true,
+			tinifyKey: 'FTGpCk4WKxVtcnpgWK6JMTtwf1RcmM6T',
+        }))
+	.pipe(dest('./src/dist/'));
+};
 
   function scripts() {
 	return src('./src/js/script.js')
@@ -59,13 +73,19 @@ function browsersync() {
   }
   
   function copyImages() {
-	return src('./src/images/**/*')
+	return src('./src/dist/**/*', { encoding: false }) 
+	.pipe(dest('./public/images/'))
+  }
+
+  function copyDist() {
+	return src('./src/icons/**/*', { encoding: false }) 
 	.pipe(dest('./public/images/'))
   }
   
   async function copyResources() {
 	copyFonts()
 	copyImages()
+	copyDist()
   }
 
   async function clean() {
@@ -86,6 +106,7 @@ function browsersync() {
   
 exports.browsersync = browsersync
 exports.clean = clean
+exports.resize = resize
 exports.scripts = scripts
 exports.styles = styles
 exports.pages = pages
@@ -93,6 +114,7 @@ exports.copyResources = copyResources
 
 exports.default = parallel(
   clean,
+  resize,
   styles,
   scripts,
   copyResources,
@@ -105,8 +127,8 @@ exports.build = series(
   clean,
   styles,
   scripts,
-  copyResources,
-  pages
+  pages,
+  copyResources
 )
 
   
