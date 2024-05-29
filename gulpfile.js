@@ -94,15 +94,20 @@ function resize() {
   
   function watch_dev() {
 	watch(['./src/js/script.js', './src/components/**/*.js'], scripts)
-	watch(['./src/styles/style.scss', './src/components/**/*.scss'], styles).on(
+	watch(['./src/styles/style.scss', '/src/styles/style.scss', '/src/components/**/*.scss','./public/**/', './src/components/**/*.scss'], styles).on(
 	  'change',
 	  browserSync.reload
 	)
-	watch(['./src/pages/*.html', './src/components/**/*.html'], pages).on(
+	watch(['./src/pages/*.html', './src/components/**/*.html', './public/**/*.html'], pages).on(
 	  'change',
 	  browserSync.reload
 	)
   }
+
+//   function startwatch() {
+// 	watch('./public/**/', styles);
+// 	watch('./public/**/*.html').on('change', browserSync.reload);
+//   }
   
 exports.browsersync = browsersync
 exports.clean = clean
@@ -120,7 +125,7 @@ exports.default = parallel(
   copyResources,
   pages,
   browsersync,
-  watch_dev
+  watch_dev,
 )
 
 exports.build = series(

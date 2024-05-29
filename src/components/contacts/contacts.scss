@@ -9,6 +9,20 @@
   font-size: 34px;
   margin-top: 20px;
 }
+
+.b-contacts__icon {
+width: 40px;
+height: 40px;
+transition: 0.2s color;
+color:#000000;
+}
+
+.b-contacts__icon {
+&:hover {
+	color: red;
+};
+}
+
 .b-contacts__text {
   @include align-fontw;
   color: #282833;
@@ -32,7 +46,6 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  
 }
 .b-contacts__menu {
   @include marg-max-width;
@@ -41,6 +54,10 @@
   justify-content: space-between;
   margin-top: 86.64px;
   height: 40px;
+}
+
+.b-contacts_svg {
+  display: none;
 }
 
 .b-contacts__footer {

@@ -54,6 +54,17 @@ body {
   margin-top: 20px;
 }
 
+.b-contacts__icon {
+  width: 40px;
+  height: 40px;
+  transition: 0.2s color;
+  color: #000000;
+}
+
+.b-contacts__icon:hover {
+  color: red;
+}
+
 .b-contacts__text {
   font-weight: bold;
   text-align: center;
@@ -91,6 +102,10 @@ body {
   justify-content: space-between;
   margin-top: 86.64px;
   height: 40px;
+}
+
+.b-contacts_svg {
+  display: none;
 }
 
 .b-contacts__footer {
