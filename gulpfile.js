@@ -6,6 +6,7 @@ const gcssmq = require('gulp-group-css-media-queries')
 const includeFiles = require('gulp-include')
 const browserSync = require('browser-sync').create()
 const bulkSass = require('gulp-sass-bulk-import');
+const resizer = require('gulp-images-resizer');
 
 function browsersync() {
 	browserSync.init({
@@ -30,6 +31,19 @@ function browsersync() {
 	.pipe(dest('./public/css/'))
 	.pipe(browserSync.stream())
   }
+
+function resize() {
+    return src('./src/images/**/*', { encoding: false })
+	.pipe(resizer({
+            format: 'png',
+            width: 1920,
+			height: 1080,
+			quality: 80,
+			tinify: true,
+			tinifyKey: 'FTGpCk4WKxVtcnpgWK6JMTtwf1RcmM6T',
+        }))
+	.pipe(dest('./src/dist/'));
+};
 
   function scripts() {
 	return src('./src/js/script.js')
@@ -59,13 +73,19 @@ function browsersync() {
   }
   
   function copyImages() {
-	return src('./src/images/**/*')
+	return src('./src/dist/**/*', { encoding: false }) 
+	.pipe(dest('./public/images/'))
+  }
+
+  function copyDist() {
+	return src('./src/icons/**/*', { encoding: false }) 
 	.pipe(dest('./public/images/'))
   }
   
   async function copyResources() {
 	copyFonts()
 	copyImages()
+	copyDist()
   }
 
   async function clean() {
@@ -74,18 +94,24 @@ function browsersync() {
   
   function watch_dev() {
 	watch(['./src/js/script.js', './src/components/**/*.js'], scripts)
-	watch(['./src/styles/style.scss', './src/components/**/*.scss'], styles).on(
+	watch(['./src/styles/style.scss', '/src/styles/style.scss', '/src/components/**/*.scss','./public/**/', './src/components/**/*.scss'], styles).on(
 	  'change',
 	  browserSync.reload
 	)
-	watch(['./src/pages/*.html', './src/components/**/*.html'], pages).on(
+	watch(['./src/pages/*.html', './src/components/**/*.html', './public/**/*.html'], pages).on(
 	  'change',
 	  browserSync.reload
 	)
   }
+
+//   function startwatch() {
+// 	watch('./public/**/', styles);
+// 	watch('./public/**/*.html').on('change', browserSync.reload);
+//   }
   
 exports.browsersync = browsersync
 exports.clean = clean
+exports.resize = resize
 exports.scripts = scripts
 exports.styles = styles
 exports.pages = pages
@@ -93,20 +119,21 @@ exports.copyResources = copyResources
 
 exports.default = parallel(
   clean,
+  resize,
   styles,
   scripts,
   copyResources,
   pages,
   browsersync,
-  watch_dev
+  watch_dev,
 )
 
 exports.build = series(
   clean,
   styles,
   scripts,
-  copyResources,
-  pages
+  pages,
+  copyResources
 )
 
   
